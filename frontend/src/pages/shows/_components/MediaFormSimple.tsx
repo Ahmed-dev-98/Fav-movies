@@ -151,8 +151,9 @@ const MediaFormSimple: React.FC<MediaFormProps> = ({
       location: data.location || undefined,
       description: data.description || undefined,
       language: data.language || undefined,
-      posterUrl: data.posterUrl || undefined,
+      posterUrl: data.posterUrl === "" ? undefined : data.posterUrl,
     };
+
     const api =
       mode === "edit" && initialData && initialData.id
         ? updateMedia.mutateAsync(initialData?.id, cleanedData)

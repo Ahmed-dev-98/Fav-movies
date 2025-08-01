@@ -194,9 +194,22 @@ router.put(
       }
     }
 
+    // Handle posterUrl explicitly - if it's undefined or empty string, set to null to remove existing value
+    const updateData = { ...validatedData };
+    console.log('PUT /api/media/:id - Original validatedData:', validatedData);
+    console.log('PUT /api/media/:id - posterUrl value:', validatedData.posterUrl);
+    console.log('PUT /api/media/:id - posterUrl type:', typeof validatedData.posterUrl);
+
+    if (validatedData.posterUrl === undefined || validatedData.posterUrl === '' || validatedData.posterUrl === null) {
+      updateData.posterUrl = null;
+      console.log('PUT /api/media/:id - Setting posterUrl to null');
+    }
+
+    console.log('PUT /api/media/:id - Final updateData:', updateData);
+
     const updatedMedia = await req.prisma.media.update({
       where: { id },
-      data: { ...validatedData, posterUrl: validatedData.posterUrl || null },
+      data: updateData,
     });
 
     const response: ApiResponse<Media> = {

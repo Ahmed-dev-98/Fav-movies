@@ -145,11 +145,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       {previewUrl ? (
         <div className="relative">
           <div className="relative w-full h-[400px] border-2 border-dashed border-gray-300 rounded-lg overflow-hidden">
-            <img
-              src={previewUrl}
-              alt="Preview"
-              className="w-full h-full "
-            />
+            <img src={previewUrl} alt="Preview" className="w-full h-full " />
             {!disabled && (
               <button
                 type="button"
