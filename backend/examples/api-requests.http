@@ -1,0 +1,137 @@
+### Movie Management API Examples
+### Make sure to start the server with: npm run dev
+### Server should be running on http://localhost:3000
+
+### Health Check
+GET http://localhost:3000/health
+
+###
+
+### Get All Media with Pagination
+GET http://localhost:3000/api/media?page=1&limit=5
+
+###
+
+### Search Media by Title
+GET http://localhost:3000/api/media?search=inception
+
+###
+
+### Filter by Type (Movies only)
+GET http://localhost:3000/api/media?type=MOVIE&limit=20
+
+###
+
+### Filter by Genre
+GET http://localhost:3000/api/media?genre=SCIENCE_FICTION
+
+###
+
+### Filter by Year
+GET http://localhost:3000/api/media?year=2010
+
+###
+
+### Advanced Filtering with Multiple Parameters
+GET http://localhost:3000/api/media?type=MOVIE&genre=CRIME&sortBy=rating&sortOrder=desc&limit=10
+
+###
+
+### Get Single Media Item (replace :id with actual ID)
+GET http://localhost:3000/api/media/1
+
+###
+
+### Create New Movie
+POST http://localhost:3000/api/media
+Content-Type: application/json
+
+{
+  "title": "The Dark Knight",
+  "type": "MOVIE",
+  "director": "Christopher Nolan",
+  "budget": 185000000,
+  "location": "Chicago, USA",
+  "duration": 152,
+  "year": 2008,
+  "genre": "ACTION",
+  "rating": 9.0,
+  "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.",
+  "language": "English",
+
+}
+
+###
+
+### Create New TV Show
+POST http://localhost:3000/api/media
+Content-Type: application/json
+
+{
+  "title": "Game of Thrones",
+  "type": "TV_SHOW",
+  "director": "David Benioff",
+  "budget": 15000000,
+  "location": "Northern Ireland",
+  "duration": 57,
+  "year": 2011,
+  "genre": "FANTASY",
+  "rating": 9.3,
+  "description": "Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.",
+  "language": "English",
+
+}
+
+###
+
+### Update Media Item (replace :id with actual ID)
+PUT http://localhost:3000/api/media/1
+Content-Type: application/json
+
+{
+  "rating": 9.5,
+  "description": "Updated description with more details about the plot and characters."
+}
+
+###
+
+### Partial Update - Only Rating
+PUT http://localhost:3000/api/media/1
+Content-Type: application/json
+
+{
+  "rating": 8.9
+}
+
+###
+
+### Delete Media Item (replace :id with actual ID)
+DELETE http://localhost:3000/api/media/1
+
+###
+
+### Get Statistics Overview
+GET http://localhost:3000/api/media/stats/overview
+
+###
+
+### Error Testing - Invalid Data
+POST http://localhost:3000/api/media
+Content-Type: application/json
+
+{
+  "title": "",
+  "type": "INVALID_TYPE",
+  "year": 1800,
+  "rating": 15
+}
+
+###
+
+### Error Testing - Non-existent Media
+GET http://localhost:3000/api/media/99999
+
+###
+
+### Error Testing - Invalid ID Format
+GET http://localhost:3000/api/media/abc

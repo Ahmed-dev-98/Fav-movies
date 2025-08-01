@@ -1,0 +1,175 @@
+{
+  "info": {
+    "name": "Movie Management API",
+    "description": "Complete collection of API endpoints for the Movie Management Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Get All Media",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/media?page=1&limit=10",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media"],
+          "query": [
+            { "key": "page", "value": "1" },
+            { "key": "limit", "value": "10" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search Media",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/media?search=inception",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media"],
+          "query": [{ "key": "search", "value": "inception" }]
+        }
+      }
+    },
+    {
+      "name": "Filter by Type",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/media?type=MOVIE&limit=20",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media"],
+          "query": [
+            { "key": "type", "value": "MOVIE" },
+            { "key": "limit", "value": "20" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Advanced Filtering",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/media?type=MOVIE&genre=SCIENCE_FICTION&sortBy=rating&sortOrder=desc",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media"],
+          "query": [
+            { "key": "type", "value": "MOVIE" },
+            { "key": "genre", "value": "SCIENCE_FICTION" },
+            { "key": "sortBy", "value": "rating" },
+            { "key": "sortOrder", "value": "desc" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Single Media",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/media/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media", "1"]
+        }
+      }
+    },
+    {
+      "name": "Create Movie",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Matrix\",\n  \"type\": \"MOVIE\",\n  \"director\": \"The Wachowskis\",\n  \"budget\": 63000000,\n  \"location\": \"Sydney, Australia\",\n  \"duration\": 136,\n  \"year\": 1999,\n  \"genre\": \"SCIENCE_FICTION\",\n  \"rating\": 8.7,\n  \"description\": \"A computer programmer discovers that reality as he knows it is a simulation.\",\n  \"language\": \"English\",\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/media",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media"]
+        }
+      }
+    },
+    {
+      "name": "Create TV Show",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Breaking Bad\",\n  \"type\": \"TV_SHOW\",\n  \"director\": \"Vince Gilligan\",\n  \"budget\": 3000000,\n  \"location\": \"Albuquerque, New Mexico\",\n  \"duration\": 47,\n  \"year\": 2008,\n  \"genre\": \"CRIME\",\n  \"rating\": 9.5,\n  \"description\": \"A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine.\",\n  \"language\": \"English\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/media",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media"]
+        }
+      }
+    },
+    {
+      "name": "Update Media",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rating\": 9.0,\n  \"description\": \"Updated description with more details.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/media/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Media",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/media/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/media/stats/overview",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "media", "stats", "overview"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}

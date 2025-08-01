@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 12px;
+  /* Modern Cinema Theme - Light Mode */
+  --background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+  --background-solid: #fafafa;
+  --foreground: #1a1a1a;
+  --card: rgba(255, 255, 255, 0.9);
+  --card-foreground: #1a1a1a;
+  --popover: rgba(255, 255, 255, 0.95);
+  --popover-foreground: #1a1a1a;
+  --primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --primary-solid: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(244, 244, 245, 0.8);
+  --secondary-foreground: #374151;
+  --muted: rgba(244, 244, 245, 0.6);
+  --muted-foreground: #6b7280;
+  --accent: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  --accent-solid: #f59e0b;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ef4444;
+  --border: rgba(226, 232, 240, 0.8);
+  --input: rgba(255, 255, 255, 0.8);
+  --ring: #6366f1;
+
+  /* Cinema specific colors */
+  --cinema-gold: #f59e0b;
+  --cinema-purple: #8b5cf6;
+  --cinema-dark: #1e1b4b;
+  --cinema-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --success: #10b981;
+  --warning: #f59e0b;
+}
+
+.dark {
+  /* Modern Cinema Theme - Dark Mode */
+  --background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  --background-solid: #0f0f23;
+  --foreground: #f8fafc;
+  --card: rgba(30, 41, 59, 0.8);
+  --card-foreground: #f8fafc;
+  --popover: rgba(30, 41, 59, 0.95);
+  --popover-foreground: #f8fafc;
+  --primary: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  --primary-solid: #8b5cf6;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(51, 65, 85, 0.6);
+  --secondary-foreground: #e2e8f0;
+  --muted: rgba(51, 65, 85, 0.4);
+  --muted-foreground: #94a3b8;
+  --accent: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  --accent-solid: #f59e0b;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(148, 163, 184, 0.2);
+  --input: rgba(30, 41, 59, 0.6);
+  --ring: #8b5cf6;
+
+  /* Cinema specific colors - Dark */
+  --cinema-gold: #f59e0b;
+  --cinema-purple: #8b5cf6;
+  --cinema-dark: #1e1b4b;
+  --cinema-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --success: #10b981;
+  --warning: #f59e0b;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: var(--background-solid);
+  background-image: var(--background);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  /* Smooth transition for background color only */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+}
+
+/* Smooth transitions for specific properties that can transition */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Apply theme transitions to specific elements */
+html {
+  transition: background-color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Default to dark mode */
+html {
+  color-scheme: dark;
+}
+
+/* Ensure cards and containers transition smoothly */
+.card,
+.card *,
+[class*="bg-gradient"] {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Prevent gradient transitions which cause choppy behavior */
+[class*="bg-gradient"] {
+  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Specific transitions for different element types */
+.card,
+.card * {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button,
+input,
+select,
+textarea {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-solid);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-solid);
+}
+
+/* Backdrop blur effect */
+.backdrop-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* No transition for gradients as they don't transition smoothly */
+}
+
+/* Cinema theme animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
