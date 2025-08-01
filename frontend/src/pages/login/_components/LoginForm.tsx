@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getFirebaseErrorMessage } from "@/lib/utils";
 
 interface LoginFormProps {
   onSuccess?: () => void;
@@ -34,7 +35,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
       await login(email, password);
       onSuccess?.();
     } catch (error) {
-      setError(error instanceof Error ? error.message : "Login failed");
+      setError(getFirebaseErrorMessage(error));
     } finally {
       setIsLoading(false);
     }

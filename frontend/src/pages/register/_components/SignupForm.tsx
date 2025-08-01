@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Mail, Lock, Eye, EyeOff, Loader2, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getFirebaseErrorMessage } from "@/lib/utils";
 
 interface SignupFormProps {
   onSuccess?: () => void;
@@ -42,7 +43,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSuccess }) => {
       await signup(email, password);
       onSuccess?.();
     } catch (error) {
-      setError(error instanceof Error ? error.message : "Signup failed");
+      setError(getFirebaseErrorMessage(error));
     } finally {
       setIsLoading(false);
     }
@@ -191,9 +192,11 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSuccess }) => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-3 bg-red-50 border border-red-200 rounded-lg"
+                className="p-3 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg"
               >
-                <div className="text-sm text-red-600">{error}</div>
+                <div className="text-sm text-red-600 dark:text-red-400">
+                  {error}
+                </div>
               </motion.div>
             )}
 
