@@ -134,7 +134,9 @@ const MediaFormSimple: React.FC<MediaFormProps> = ({
       duration: initialData?.duration || undefined,
       year: initialData?.year || undefined,
       genre: initialData?.genre || undefined,
-      rating: initialData?.rating || 0,
+      rating: initialData?.rating
+        ? parseFloat(Number(initialData.rating).toFixed(1))
+        : 0,
       description: initialData?.description || "",
       language: initialData?.language || undefined,
       posterUrl: initialData?.posterUrl || "",
