@@ -193,8 +193,7 @@ router.put(
         );
       }
     }
-    //check if posterUrl is null or undefined and if it is, set it to null in the database
-    if (!validatedData.posterUrl) {
+    if (validatedData.posterUrl === undefined || validatedData.posterUrl === '') {
       validatedData.posterUrl = null;
     }
     const updatedMedia = await req.prisma.media.update({
