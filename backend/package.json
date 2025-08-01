@@ -16,7 +16,8 @@
     "type-check": "tsc --noEmit",
     "clean": "rimraf dist",
     "postinstall": "prisma generate",
-    "setup:dev": "cp prisma/schema.sqlite.prisma prisma/schema.prisma && npm run db:generate && npm run db:migrate:dev",
+    "setup:dev": "copy prisma\\schema.sqlite.prisma prisma\\schema.prisma && npm run db:generate && npm run db:migrate:dev",
+    "setup:mysql": "copy prisma\\schema.mysql.prisma prisma\\schema.prisma && npm run db:generate && npm run db:migrate:dev",
     "setup:prod": "npm run db:generate && npm run db:migrate"
   },
   "keywords": [
@@ -38,6 +39,7 @@
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
+    "mysql2": "^3.14.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {

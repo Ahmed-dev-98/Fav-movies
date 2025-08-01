@@ -5,7 +5,7 @@ A Node.js/Express backend for managing favorite movies and TV shows with Prisma 
 ## Features
 
 - RESTful API for media management
-- PostgreSQL database with Prisma ORM
+- Multi-database support (SQLite, PostgreSQL, MySQL) with Prisma ORM
 - Authentication middleware
 - Rate limiting and security headers
 - CORS support
@@ -32,32 +32,38 @@ npm install
 cp .env.example .env
 ```
 
-3. For local development with SQLite:
+3. Choose your database setup:
+
+**For SQLite (default, easiest):**
 
 ```bash
-# Update .env to use SQLite
-DATABASE_URL="file:./dev.db"
+npm run setup:dev
 ```
 
-4. Generate Prisma client:
+**For MySQL:**
 
 ```bash
-npm run db:generate
+# First, install MySQL and create a database
+# Then update .env with MySQL connection string
+DATABASE_URL="mysql://username:password@localhost:3306/movie_db"
+npm run setup:mysql
 ```
 
-5. Run database migrations:
+**For PostgreSQL:**
 
 ```bash
-npm run db:migrate
+# Update .env with PostgreSQL connection string
+DATABASE_URL="postgresql://username:password@localhost:5432/movie_db"
+npm run setup:prod
 ```
 
-6. Seed the database (optional):
+4. Seed the database (optional):
 
 ```bash
 npm run db:seed
 ```
 
-7. Start development server:
+5. Start development server:
 
 ```bash
 npm run dev
@@ -141,12 +147,28 @@ The application uses a `Media` model with the following fields:
 - `createdAt` (DateTime)
 - `updatedAt` (DateTime)
 
+## Database Management
+
+### Switching Between Databases
+
+The application supports multiple database types. Use these commands to switch:
+
+- `npm run setup:dev` - Switch to SQLite (default, easiest setup)
+- `npm run setup:mysql` - Switch to MySQL (requires MySQL installation)
+- `npm run setup:prod` - Switch to PostgreSQL (production)
+
+> **📖 Detailed Migration Guide**: See [MYSQL_MIGRATION.md](./MYSQL_MIGRATION.md) for step-by-step instructions on setting up MySQL.
+
+### Database Setup Commands
+
+- `npm run db:migrate` - Run database migrations
+- `npm run db:generate` - Generate Prisma client
+- `npm run db:seed` - Seed database with sample data
+- `npm run db:studio` - Open Prisma Studio for database management
+
 ## Scripts
 
 - `npm run build` - Build TypeScript to JavaScript
 - `npm start` - Start production server
 - `npm run dev` - Start development server with hot reload
-- `npm run db:migrate` - Run database migrations
-- `npm run db:generate` - Generate Prisma client
-- `npm run db:seed` - Seed database with sample data
 - `npm run type-check` - Type check without building
