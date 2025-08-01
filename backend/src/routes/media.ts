@@ -193,7 +193,7 @@ router.put(
         );
       }
     }
-    if (validatedData.posterUrl === undefined || validatedData.posterUrl === '') {
+    if (validatedData.posterUrl === undefined || validatedData.posterUrl === '' || validatedData.posterUrl === null || !validatedData.posterUrl) {
       validatedData.posterUrl = null;
     }
     const updatedMedia = await req.prisma.media.update({
