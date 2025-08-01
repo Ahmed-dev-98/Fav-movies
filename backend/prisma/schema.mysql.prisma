@@ -18,7 +18,7 @@ model Media {
     year        Int?
     genre       String?
     rating      Decimal?
-    description String?
+    description String?  @db.Text
     language    String?
     posterUrl   String?
     createdAt   DateTime @default(now())
