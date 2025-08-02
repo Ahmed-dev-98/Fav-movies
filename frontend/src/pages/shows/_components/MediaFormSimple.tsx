@@ -62,7 +62,10 @@ const mediaSchema = z.object({
   budget: z.number().min(1, "Budget is required"),
   location: z.enum(Object.keys(LOCATION_OPTIONS) as [string, ...string[]]),
   duration: z.number(),
-  year: z.number(),
+  year: z
+    .number()
+    .min(1900, "Year must be greater than 1900")
+    .max(2025, "Year must be less than 2025"),
   genre: z.enum([
     "ACTION",
     "ADVENTURE",
